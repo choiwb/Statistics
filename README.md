@@ -2,5 +2,5 @@
 
  통계학 전공 Projects
  
- -EM Algorithms
- -Least Square methods
+ - EM Algorithms
+ - Least Square methods
