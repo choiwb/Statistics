@@ -50,13 +50,13 @@ yp2 = [0.7 -1.0 -0.2 -1.2 -0.1 3.4 0.0 0.8 3.7 2.0];
 % mesh(x11 , x22, y_hat)
 % grid on, hold off
 
-y_hat2 = @(b) b(1)+x1*b(2) + x2*b(3);
+y_hat2 = @(b) b(1)+x1*b(2) + x2.^2*b(3);
 y3sum = @(b) sum((y_hat2(b) - yp2).^2);
 newb3 = fminsearch(y3sum, [0 0 0]);
 
 stxp2 = sort(x1);
 stxp3 = sort(x2);
-sty3 = @(b) b(1)+stxp2*b(2) + stxp3*b(3);
+sty3 = @(b) b(1)+stxp2*b(2) + stxp3.^2*b(3);
 
 figure(5)
 plot3(stxp2, stxp3, sty3(newb3),'--r',x1,x2, yp2,'o');
