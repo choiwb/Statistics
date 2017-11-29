@@ -36,19 +36,19 @@ x1 = [1.9 0.8 1.1 0.1 -0.1 4.4 4.6 1.6 5.5 3.4];
 x2 = [66 62 64 61 63 70 68 62 68 66];
 yp2 = [0.7 -1.0 -0.2 -1.2 -0.1 3.4 0.0 0.8 3.7 2.0];
 
-% plot3(x1, x2, yp2)
-% grid on, hold on
-% x11 = linspace(0.1 , 5.5);
-% x22 = linspace(61, 70);
+plot3(x1, x2, yp2, '.')
+grid on, hold on
+x11 = linspace(0.1 , 5.5);
+x22 = linspace(61, 70);
 
-% for i = 1:100
-%     for j = 1:100
-%         y_hat = -11.4527 + 0.4503*x11(i) + 0.1725*x22(j);
-%     end
-% end
-% 
-% mesh(x11 , x22, y_hat)
-% grid on, hold off
+for i = 1:100
+    for j = 1:100
+        y_hat(i,j) = -11.4527 + 0.4503*x11(i) + 0.1725*x22(j);
+    end
+end
+
+mesh(x11 , x22, y_hat)
+grid on, hold off
 
 y_hat2 = @(b) b(1)+x1*b(2) + x2.^2*b(3);
 y3sum = @(b) sum((y_hat2(b) - yp2).^2);
